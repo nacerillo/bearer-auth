@@ -5,7 +5,7 @@ const authRouter = express.Router();
 
 const User = require("./users.js");
 
-const basic = require("./basic-auth-middleware.js");
+const basicAuth = require("../middleware/basic-auth-middleware.js");
 
 authRouter.post("/signup", async (req, res, next) => {
   try {
