@@ -3,13 +3,14 @@
 const express = require("express");
 const authRouter = express.Router();
 
-const User = require("./users.js");
+const User = require("../models/user.js");
 
-const basicAuth = require("../middleware/basic-auth-middleware.js");
+const basicAuth = require("./basic-auth-middleware.js");
 
 authRouter.post("/signup", async (req, res, next) => {
   try {
     let user = new User(req.body);
+    console.log(user);
     const record = await user.save();
     res.status(201).json(record);
   } catch (e) {
