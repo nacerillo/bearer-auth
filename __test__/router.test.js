@@ -19,7 +19,7 @@ describe("Auth Router", () => {
           .post("/signup")
           .send(users[userType]);
         const userObject = response.body;
-
+        c
         expect(response.status).toBe(201);
         expect(userObject.token).toBeDefined();
         expect(userObject.user._id).toBeDefined();

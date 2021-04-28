@@ -26,7 +26,7 @@ describe("Auth Middleware", () => {
   };
   const next = jest.fn();
 
-  describe("user authentication", () => {
+  describe("Bearer Auth", () => {
     it("fails a login for a user (admin) with an incorrect token", () => {
       req.headers = {
         authorization: "Bearer thisisabadtoken",

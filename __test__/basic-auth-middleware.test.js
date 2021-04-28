@@ -7,15 +7,14 @@ const Users = require("../src/auth/models/user.js");
 let users = {
   admin: { username: "admin", password: "password" },
 };
-// Pre-load our database with fake users
+// Load database with fake users
 beforeAll(async (done) => {
   await new Users(users.admin).save();
   done();
 });
 
 describe("Auth Middleware", () => {
-  // admin:password: YWRtaW46cGFzc3dvcmQ=
-  // admin:foo: YWRtaW46Zm9v
+
 
   // Mock the express req/res/next that we need for each middleware call
   const req = {};
