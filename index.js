@@ -1,10 +1,10 @@
-"user strict";
+"use strict";
 
 require("dotenv").config();
 
 const mongoose = require("mongoose");
 const options = {
-  userNewUrlParser: true,
+  useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
 };
