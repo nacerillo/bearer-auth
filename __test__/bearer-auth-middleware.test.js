@@ -3,7 +3,7 @@
 process.env.SECRET = "toes";
 
 require("@code-fellows/supergoose");
-const middleware = require("../src/auth/middleware/bearer-auth-middleware.js");
+const bearer = require("../src/auth/middleware/bearer-auth-middleware.js");
 const Users = require("../src/auth/models/user.js");
 const jwt = require("jsonwebtoken");
 
@@ -26,13 +26,13 @@ describe("Auth Middleware", () => {
   };
   const next = jest.fn();
 
-  describe("user authentication", () => {
+  describe("Bearer Auth", () => {
     it("fails a login for a user (admin) with an incorrect token", () => {
       req.headers = {
         authorization: "Bearer thisisabadtoken",
       };
 
-      return middleware(req, res, next).then(() => {
+      return bearer(req, res, next).then(() => {
         expect(next).not.toHaveBeenCalled();
         expect(res.status).toHaveBeenCalledWith(403);
       });
@@ -46,7 +46,7 @@ describe("Auth Middleware", () => {
         authorization: `Bearer ${token}`,
       };
 
-      return middleware(req, res, next).then(() => {
+      return bearer(req, res, next).then(() => {
         expect(next).toHaveBeenCalledWith();
       });
     });

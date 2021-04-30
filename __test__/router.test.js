@@ -56,7 +56,7 @@ describe("Auth Router", () => {
       });
     });
 
-    xdescribe("bad logins", () => {
+    describe("bad logins", () => {
       it("basic fails with known user and wrong password ", async () => {
         const response = await mockRequest.post("/signin").auth("admin", "xyz");
         const userObject = response.body;

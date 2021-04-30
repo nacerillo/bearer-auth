@@ -3,8 +3,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-const APP_SECRET = "coolpassword";
+const SECRET = "toes";
 const users = new mongoose.Schema(
   {
     username: { type: String, required: true, unique: true },
@@ -24,7 +23,8 @@ users.virtual("token").get(function () {
   let tokenObj = {
     username: this.username,
   };
-  return jwt.sign(tokenObj, APP_SECRET);
+  console.log(jwt.sign(tokenObj, SECRET));
+  return jwt.sign(tokenObj, SECRET);
 });
 
 users.pre("save", async function () {
@@ -43,8 +43,9 @@ users.statics.authenticateBasic = async function (username, password) {
 };
 // bearer auth
 users.statics.authenticateToken = async function (token) {
-  console.log("CONFIRM TOKEN", token);
-  const parsedToken = await jwt.verify(token, APP_SECRET);
+  console.log("Reaches TOKEN", token);
+  console.log(jwt.verify(token, SECRET));
+  const parsedToken = jwt.verify(token, SECRET);
   console.log("PARSED TOKEN", parsedToken);
   const user = await this.findOne({ username: parsedToken.username });
 
