@@ -8,7 +8,7 @@
 
 - [ci/cd](https://github.com/nacerillo/bearer-auth/actions) 
 - [GitHub](https://github.com/nacerillo/bearer-auth) 
-
+- [Heroku](https://bearer-auth-prod.herokuapp.com/)
 ### Setup
 
 #### `.env` requirements
