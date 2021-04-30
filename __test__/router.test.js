@@ -19,7 +19,7 @@ describe("Auth Router", () => {
           .post("/signup")
           .send(users[userType]);
         const userObject = response.body;
-        c
+
         expect(response.status).toBe(201);
         expect(userObject.token).toBeDefined();
         expect(userObject.user._id).toBeDefined();
@@ -56,7 +56,7 @@ describe("Auth Router", () => {
       });
     });
 
-    xdescribe("bad logins", () => {
+    describe("bad logins", () => {
       it("basic fails with known user and wrong password ", async () => {
         const response = await mockRequest.post("/signin").auth("admin", "xyz");
         const userObject = response.body;
